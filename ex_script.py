@@ -1,31 +1,33 @@
-import math
-import os
+import random
 
-def Add(a,b):
-  result = a+b
-  return result
+# Generate a random number between 1 and 100
+secret_number = random.randint(1, 100)
 
-def divideNumbers(a , b ):
-    if(b != 0 ):
-       return a /b 
+print("Welcome people!")
+print("I'm thinking of a number between 1 and 100.")
+
+# Initialize the guess count
+guess_count = 0
+
+while True:
+    # Get the player's guess
+    guess = input("Enter your guess: ")
+    
+    # Validate the input
+    if not guess.isdigit():
+        print("Please enter a valid number.")
+        continue
+    
+    guess = int(guess)
+    guess_count += 1
+    
+    # Check the guess
+    if guess < secret_number:
+        print("Too low! Try again.")
+    elif guess > secret_number:
+        print("Too high! Try again.")
     else:
-       print("Error: division by zero!")
-    return None
+        print(f"Congratulations! You guessed the number in {guess_count} tries!")
+        break
 
-def factorial(n):
-    f = 1
-    for i in range(1, n + 1 ):
-       f=f*i
-    return f
-  
-def printResult( x):
-  if x is not None:
-      print( "The result is: " + str( x ) )
-
-val1 = 10
-VAL2 = 0
-sum = Add(val1, VAL2)
-division = divideNumbers(10, 0)
-fact = factorial( 5 )
-printResult( sum )
-printResult(fact)
+print("Thanks for playing!")
